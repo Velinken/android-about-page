@@ -1,41 +1,13 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
     repositories {
-        jcenter()
         google()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'   // Стандарт
-        // https://github.com/bintray/gradle-bintray-plugin
-        // Плагин Gradle Bintray позволяет публиковать артефакты в Bintray. Закрывается
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'  //1.8.5
-        // https://github.com/dcendents/android-maven-gradle-plugin
-        // Заброшенный. Теперь это поддерживается плагином android build plugin:
-        // https://developer.android.com/studio/build/maven-publish-plugin
-        // Используйте плагин Maven Publish
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'  // 	(04 апреля 2018 г.)
+        classpath 'com.android.tools.build:gradle:4.2.2'
     }
 }
-
-plugins {
-    // https://github.com/gradle-nexus/publish-plugin
-    //Плагин Gradle для публикации в репозиториях Nexus
-    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-}
-
-apply from: "${rootDir}/scripts/publish-root.gradle"
-
-allprojects {
-    repositories {
-        jcenter()
-        google()
-        maven {
-            url 'https://dl.bintray.com/medyo/maven/'
-        }
-    }
-}
-
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
