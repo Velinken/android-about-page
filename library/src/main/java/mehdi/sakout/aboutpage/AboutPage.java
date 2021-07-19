@@ -33,9 +33,15 @@ import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
  * an About page. This class creates a {@link android.view.View} that can be passed as the root view
  * in {@link Fragment#onCreateView(LayoutInflater, ViewGroup, Bundle)} or passed to the {@link android.app.Activity#setContentView(View)}
  * in an activity's {@link android.app.Activity#onCreate(Bundle)} (Bundle)} method
+ * Основной класс этой библиотеки со множеством предопределенных методов для добавления элементов для общих элементов на
+ * странице о программе. Этот класс создает {@link android.view.Представление}, которое может быть передано как корневое представление
+ * в {@фрагмент ссылки#onCreateView(LayoutInflater, ViewGroup, Пакет)} или передается в {@ссылка android.app.Действие#setContentView(Просмотр)}
+ * в методе действия {@ссылка android.app.Действие#onCreate(пакет)} (Пакет)}
  * <p>
  * To create a custom item in the about page, pass an instance of {@link mehdi.sakout.aboutpage.Element}
  * to the {@link AboutPage#addItem(Element)} method.
+ * Чтобы создать пользовательский элемент на странице "О программе", передайте экземпляр страницы {@link mehdi.saki.about.Элемент}
+ * к методу {@ссылка о странице#addItem(Элемент)}.
  *
  * @see Element
  */
@@ -53,26 +59,31 @@ public class AboutPage {
     /**
      * The AboutPage requires a context to perform it's functions. Give it a context associated to an
      * Activity or a Fragment. To avoid memory leaks, don't pass a
+     * Страница "О программе" требует контекста для выполнения своих функций. Дайте ему контекст, связанный с действием
+     * или фрагментом. Чтобы избежать утечек памяти, не передавайте
      * {@link android.content.Context#getApplicationContext() Context.getApplicationContext()} here.
      *
      * @param context
      */
+    // Java Конструктор 1
     public AboutPage(Context context) {
         this(context, AboutPageUtils.resolveResIdAttr(context, R.attr.aboutStyle, R.style.about_About));
     }
-
+    // Java Конструктор 2
     public AboutPage(Context context, boolean forceEnableDarkMode) {
         this(context, forceEnableDarkMode ? R.style.about_AboutBase_Dark : R.style.about_AboutBase_Light);
     }
-
+    // Java Конструктор 3
     public AboutPage(Context context, @StyleRes int style) {
         this.mContext = new ContextThemeWrapper(context, style);
         this.mInflater = LayoutInflater.from(this.mContext);
         this.mView = mInflater.inflate(R.layout.about_page, null);
     }
 
+    // Дальше описаны Методы этого класса AboutPage
     /**
      * Provide a valid path to a font here to use another font for the text inside this AboutPage
+     * Укажите здесь допустимый путь к шрифту, чтобы использовать другой шрифт для текста на этой странице о программе
      *
      * @param path
      * @return this AboutPage instance for builder pattern support

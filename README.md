@@ -1,9 +1,11 @@
 # Android About Page
 Create an awesome About Page for your Android App in 2 minutes
+Создайте потрясающую страницу о вашем приложении для Android за 2 минуты
 
 <img src="/resources/cover.png" width="80%" alt="Android About Page Cover"/>
 
 This library allows to generate beautiful About Pages with less effort, it's fully customizable and supports opening specific intent
+Эта библиотека позволяет создавать красивые страницы с меньшими усилиями, она полностью настраиваема и поддерживает открытие определенных целей
 
 ```java
 View aboutPage = new AboutPage(this)
@@ -26,6 +28,7 @@ View aboutPage = new AboutPage(this)
 
 ## Setup
 Available on Jcenter, Maven and JitPack
+Доступно в Jcenter, Maven и Jetpack
 
 ```groovy
 implementation 'io.github.medyo:android-about-page:2.0.0'
@@ -46,6 +49,7 @@ setImage(Int)
 
 ### 3. Add predefined Social network
 The library has already some predefined social networks like :  
+В библиотеке уже есть некоторые предопределенные социальные сети, такие как :
 
 * Facebook
 * Twitter
@@ -71,7 +75,7 @@ versionElement.setTitle("Version 6.2");
 addItem(versionElement)
 ```
 
-### 5. Available attributes for Element Class
+### 5. Available attributes for Element Class Доступные атрибуты для класса элементов
 
 
 | Function        | Description  |
@@ -85,7 +89,7 @@ addItem(versionElement)
 | setGravity(Gravity) | Set a Gravity for the element  |
 | setOnClickListener(View.OnClickListener) | If `intent` isn't suitable for you need, implement your custom behaviour by overriding the click listener|
 
-### 6. How to use the library in a fragment
+### 6. How to use the library in a fragment Как использовать библиотеку во фрагмент
 ```java
  @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -107,8 +111,13 @@ The library supports day-night modes. The dependents may use the following
 styling attributes to create a dedicated style for `AboutPage`. If the
 dependents choose not to specify an explicit style, the library falls back to
 sensible defaults.
+Библиотека поддерживает дневной и ночной режимы. Иждивенцы могут использовать следующие атрибуты
+стиля для создания специального стиля для " О странице`. Если
+иждивенцы решат не указывать явный стиль, библиотека вернется к
+разумным значениям по умолчанию.
 
 First, declare an `AboutPage` style in your `styles.xml`.
+Во-первых, объявите стиль "О странице" в своем " styles.xml`.
 
 ```xml
 <!-- Define a global style for AboutPage in your 'styles.xml' -->
@@ -131,6 +140,8 @@ First, declare an `AboutPage` style in your `styles.xml`.
 
 To apply this style globally, assign its reference to `aboutStyle` attribute in
 your app theme.
+Чтобы применить этот стиль глобально, назначьте его ссылку на атрибут " о стиле` в теме
+вашего приложения.
 
 ```xml
 <style name="Theme.App" parent="Theme.AppCompat">
@@ -140,31 +151,39 @@ your app theme.
 
 Or explicitly pass the style resource to the `AboutPage` constructor to apply it
 on selective `AboutPage` instances.
+Или явно передайте ресурс стиля конструктору "О странице", чтобы применить его
+к выборочным экземплярам "О странице".
 
 ```java
 AboutPage aboutPage = new AboutPage(context, R.style.Widget_AboutPage);
 ```
 
-### 8. Force Night/Day mode
+### 8. Force Night/Day mode Принудительный Ночной/Дневной режим
 
-We recommend that the dependents use
+We recommend that the dependents use Мы рекомендуем, чтобы иждивенцы использовали
 [`AppCompatDelegate.setDefaultNightMode()`](https://developer.android.com/reference/androidx/appcompat/app/AppCompatDelegate#setDefaultNightMode(int))
 to force enable/disable the night mode across their apps. If the dependents are
 unable to use the recommended approach, they can use the `AboutPage(Context,
 boolean)` constructor to specify the desired mode. The dependents must note that
 by using this constructor, the `AboutPage` will use its default styles, ignoring
 any explicitly specified style.
+чтобы принудительно включить/отключить ночной режим в своих приложениях. Если иждивенцы не
+могут использовать рекомендуемый подход, они могут использовать конструктор "О странице(контекст,
+логическое значение)" для указания желаемого режима. Иждивенцы должны отметить, что
+при использовании этого конструктора страница "О программе" будет использовать свои стили по умолчанию, игнорируя
+любой явно указанный стиль.
 
 ```java
 AboutPage aboutPage = AboutPage(context, true); // force enable dark mode.
 AboutPage aboutPage = AboutPage(context, false); // force enable bright mode.
 ```
 
-## Sample Project
+## Sample Project Пример Проекта
 [medyo/android-about-page/app/](https://github.com/medyo/android-about-page/tree/master/app)
 
 ## Translations
 The library does supports the following languages :
+Библиотека поддерживает следующие языки :
 
 * Arabic (by [zecharyah](https://github.com/zecharyah))
 * Catalan (by [unxavi](https://github.com/unxavi))
@@ -203,9 +222,11 @@ The library does supports the following languages :
 * Bulgarian (by [kstoyanov5](https://github.com/kstoyanov5))
 
 Please make a Pull request to add a new language.
+Пожалуйста, сделайте запрос на добавление нового языка.
 
-## ProGuard
+## ProGuard обфускации
 Nothing to include
+Ничего, что можно было бы включить
 
 ## License
 
@@ -218,4 +239,14 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Лицензия MIT (MIT)
+Авторское право (c) 2016 Мехди Сакут
+
+Настоящим предоставляется бесплатное разрешение любому лицу, получившему копию этого программного обеспечения и связанных с ним файлов документации ("Программное обеспечение"), иметь дело с Программным обеспечением без ограничений, включая, без ограничений, права на использование, копирование, изменение, объединение, публикацию, распространение, сублицензию и/или продажу копий Программного обеспечения, и разрешать лицам, которым предоставляется Программное обеспечение, делать это при соблюдении следующих условий:
+
+Вышеуказанное уведомление об авторских правах и это уведомление о разрешении должны быть включены во все копии или существенные части Программного обеспечения.
+
+ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ "КАК ЕСТЬ", БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ ГАРАНТИЯМИ ТОВАРНОЙ ПРИГОДНОСТИ, ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ И НЕНАРУШЕНИЯ. НИ В КОЕМ СЛУЧАЕ АВТОРЫ ИЛИ ПРАВООБЛАДАТЕЛИ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ЗА КАКИЕ-ЛИБО ПРЕТЕНЗИИ, УБЫТКИ ИЛИ ИНУЮ ОТВЕТСТВЕННОСТЬ, БУДЬ ТО В РЕЗУЛЬТАТЕ ДЕЙСТВИЯ ДОГОВОРА, ДЕЛИКТА ИЛИ ИНЫМ ОБРАЗОМ, ВЫТЕКАЮЩИЕ ИЗ, ИЗ ИЛИ В СВЯЗИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ ИЛИ ИСПОЛЬЗОВАНИЕМ ИЛИ ДРУГИМИ СДЕЛКАМИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.
 ~~~
+

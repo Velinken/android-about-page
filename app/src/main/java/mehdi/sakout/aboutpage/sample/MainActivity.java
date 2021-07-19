@@ -1,5 +1,5 @@
 package mehdi.sakout.aboutpage.sample;
-
+// https://github.com/medyo/android-about-page
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
