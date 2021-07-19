@@ -1,39 +1,71 @@
-package mehdi.sakout.aboutpage;
+package mehdi.sakout.aboutpage
 
-import android.content.Intent;
-import androidx.annotation.ColorRes;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDelegate;
-import android.view.View;
+import android.content.Intent
+import android.view.View
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 
 /**
  * Element class represents an about item in the about page.
- * Use {@link AboutPage#addItem(mehdi.sakout.aboutpage.Element)} to add your
+ * Use [AboutPage.addItem] to add your
  * custom items to the AboutPage. This class can be constructed in a builder pattern type fashion.
  */
-public class Element {
+class Element {
+    /**
+     * @return the title for this Element
+     */
+    var title: String? = null
 
-    private String title;
-    private Integer iconDrawable;
-    private Integer colorDay;
-    private Integer colorNight;
-    private String value;
-    private Intent intent;
-    private Integer gravity;
-    private Boolean autoIconColor = false;
-    private Boolean skipTint = false;
+    /**
+     * Get the icon drawable for this Element that appears to the left of the title or to the
+     * right of the title in RTL layout mode.
+     *
+     * @return the icon drawable resource of this Element
+     */
+    @get:DrawableRes
+    var iconDrawable: Int? = null
 
-    private View.OnClickListener onClickListener;
+    /**
+     * @return the color resource identifier for this Elements icon
+     */
+    @get:ColorRes
+    var iconTint: Int? = null
 
-    public Element() {
+    /**
+     * Get the color resource identifier for this Elements icon when in night mode
+     *
+     * @return
+     * @see AppCompatDelegate.setDefaultNightMode
+     */
+    @get:ColorRes
+    var iconNightTint: Int? = null
+    var value: String? = null
 
-    }
+    /**
+     * Get the intent to be used for when this Element
+     *
+     * @return
+     * @see Element.setIntent
+     */
+    var intent: Intent? = null
 
-    public Element(String title, Integer iconDrawable) {
-        this.title = title;
-        this.iconDrawable = iconDrawable;
-    }
+    /**
+     * Get the gravity of the content of this Element
+     *
+     * @return See [android.view.Gravity]
+     */
+    var gravity: Int? = null
+
+    /**
+     * @return the AutoIcon
+     */
+    var autoApplyIconTint = false
+
+    /**
+     * Skip Applying a custom tint usefull when the provided drawable isn't a vectorDrawable
+     * @param skipTint
+     */
+    var skipTint = false
 
     /**
      * Get the onClickListener for this Element
@@ -41,50 +73,37 @@ public class Element {
      * @return
      * @see android.view.View.OnClickListener
      */
-    public View.OnClickListener getOnClickListener() {
-        return onClickListener;
+    var onClickListener: View.OnClickListener? = null
+
+    constructor() {}
+    constructor(title: String?, iconDrawable: Int?) {
+        this.title = title
+        this.iconDrawable = iconDrawable
     }
 
     /**
      * Set the onClickListener for this Element. It will be invoked when this particular element
      * is clicked on the AboutPage. This method has higher priority than
-     * {@link Element#setIntent(android.content.Intent)} when both methods are used
+     * [Element.setIntent] when both methods are used
      *
      * @param onClickListener
      * @return this Element instance for builder pattern support
      * @see android.view.View.OnClickListener
      */
-    public Element setOnClickListener(View.OnClickListener onClickListener) {
-        this.onClickListener = onClickListener;
-        return this;
-    }
-
-    /**
-     * Get the gravity of the content of this Element
-     *
-     * @return See {@link android.view.Gravity}
-     */
-    public Integer getGravity() {
-        return gravity;
+    fun setOnClickListener(onClickListener: View.OnClickListener?): Element {
+        this.onClickListener = onClickListener
+        return this
     }
 
     /**
      * Set the Gravity of the content for this Element
      *
-     * @param gravity See {@link android.view.Gravity}
+     * @param gravity See [android.view.Gravity]
      * @return this Element instance for builder pattern support
      */
-    public Element setGravity(Integer gravity) {
-        this.gravity = gravity;
-        return this;
-    }
-
-    /**
-     * @return the title for this Element
-     */
-    @Nullable
-    public String getTitle() {
-        return title;
+    fun setGravity(gravity: Int?): Element {
+        this.gravity = gravity
+        return this
     }
 
     /**
@@ -93,21 +112,9 @@ public class Element {
      * @param title the string value to set
      * @return this Element instance for builder pattern support
      */
-    public Element setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    /**
-     * Get the icon drawable for this Element that appears to the left of the title or to the
-     * right of the title in RTL layout mode.
-     *
-     * @return the icon drawable resource of this Element
-     */
-    @DrawableRes
-    @Nullable
-    public Integer getIconDrawable() {
-        return iconDrawable;
+    fun setTitle(title: String?): Element {
+        this.title = title
+        return this
     }
 
     /**
@@ -117,18 +124,9 @@ public class Element {
      * @param iconDrawable the icon drawable resource to set
      * @return this Element instance for builder pattern support
      */
-    public Element setIconDrawable(@DrawableRes Integer iconDrawable) {
-        this.iconDrawable = iconDrawable;
-        return this;
-    }
-
-    /**
-     * @return the color resource identifier for this Elements icon
-     */
-    @ColorRes
-    @Nullable
-    public Integer getIconTint() {
-        return colorDay;
+    fun setIconDrawable(@DrawableRes iconDrawable: Int?): Element {
+        this.iconDrawable = iconDrawable
+        return this
     }
 
     /**
@@ -137,20 +135,9 @@ public class Element {
      * @param color the color resource identifier to use for this Element
      * @return this Element instance for builder pattern support
      */
-    public Element setIconTint(@ColorRes Integer color) {
-        this.colorDay = color;
-        return this;
-    }
-
-    /**
-     * Get the color resource identifier for this Elements icon when in night mode
-     *
-     * @return
-     * @see AppCompatDelegate#setDefaultNightMode(int)
-     */
-    @ColorRes
-    public Integer getIconNightTint() {
-        return colorNight;
+    fun setIconTint(@ColorRes color: Int?): Element {
+        iconTint = color
+        return this
     }
 
     /**
@@ -160,51 +147,30 @@ public class Element {
      * @param colorNight
      * @return
      */
-    public Element setIconNightTint(@ColorRes Integer colorNight) {
-        this.colorNight = colorNight;
-        return this;
+    fun setIconNightTint(@ColorRes colorNight: Int?): Element {
+        iconNightTint = colorNight
+        return this
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public Element setValue(String value) {
-        this.value = value;
-        return this;
-    }
-
-    /**
-     * Get the intent to be used for when this Element
-     *
-     * @return
-     * @see Element#setIntent(android.content.Intent)
-     */
-    public Intent getIntent() {
-        return intent;
+    fun setValue(value: String?): Element {
+        this.value = value
+        return this
     }
 
     /**
      * Set the intent to pass to the
-     * {@link android.content.Context#startActivity(android.content.Intent)} method when this item
+     * [android.content.Context.startActivity] method when this item
      * is clicked. This method has lower priority than
-     * {@link mehdi.sakout.aboutpage.Element#setOnClickListener(android.view.View.OnClickListener)}
+     * [mehdi.sakout.aboutpage.Element.setOnClickListener]
      * when both are used.
      *
      * @param intent the intent to be used
      * @return this Element instance for builder pattern support
      * @see android.content.Intent
      */
-    public Element setIntent(Intent intent) {
-        this.intent = intent;
-        return this;
-    }
-
-    /**
-     * @return the AutoIcon
-     */
-    public Boolean getAutoApplyIconTint() {
-        return autoIconColor;
+    fun setIntent(intent: Intent?): Element {
+        this.intent = intent
+        return this
     }
 
     /**
@@ -213,20 +179,8 @@ public class Element {
      * @param autoIconColor
      * @return this Element instance for builder pattern support
      */
-    public Element setAutoApplyIconTint(Boolean autoIconColor) {
-        this.autoIconColor = autoIconColor;
-        return this;
-    }
-
-    /**
-     * Skip Applying a custom tint usefull when the provided drawable isn't a vectorDrawable
-     * @param skipTint
-     */
-    public void setSkipTint(Boolean skipTint) {
-        this.skipTint = skipTint;
-    }
-
-    public Boolean getSkipTint() {
-        return skipTint;
+    fun setAutoApplyIconTint(autoIconColor: Boolean): Element {
+        autoApplyIconTint = autoIconColor
+        return this
     }
 }
